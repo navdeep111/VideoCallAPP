@@ -8,11 +8,14 @@ const VideoPage = () => {
     const roomID = id
   let myMeeting = async (element) => {
 
- // generate Kit Token
- const appID = 490318279 ;
- const serverSecret = "e4898983536f21af59a97cd5770a5990";
+ // generate Kit Token 
+ // -gs changes
+ const appID = Number(import.meta.env.VITE_APP_ID);
+ const serverSecret = import.meta.env.VITE_SERVER_SECRET;
  const kitToken =  ZegoUIKitPrebuilt.generateKitTokenForTest(appID, serverSecret, roomID, Date.now().toString(),"navdeep");
-
+ // -gs changes
+ 
+ 
  // Create instance object from Kit Token.
  const zp = ZegoUIKitPrebuilt.create(kitToken);
  // start the call
